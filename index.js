@@ -13,11 +13,7 @@ app.set("json spaces", 2);
 
 // Middleware untuk CORS
 app.use(cors());
-//function esegan
-async function esrgan(url) {
-const res = await srgan4x(url)
-return res;
-}
+
 //fungsi untuk imagine
 async function imagine(message) {
 const prodia = new Prodia(prodiakey);
@@ -52,11 +48,10 @@ app.get('/api/imagine', async (req, res) => {
       return res.status(400).json({ error: 'Parameter "prompt" tidak ditemukan' });
     }
     const response = await imagine(message);
-    const esr = await esrgan(response)
     res.status(200).json({
       status: 200,
       creator: global.creator,
-      data: { esr }
+      data: { response }
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
