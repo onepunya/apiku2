@@ -14,6 +14,11 @@ app.set("json spaces", 2);
 app.use(cors());
 
 //fungsi untuk imagine
+async function getImageBuffer(url) {
+  const response = await axios.get('url', { responseType: 'arraybuffer' });
+  return response.data;
+}
+//imagine
 async function imagine(message) {
 const prodia = new Prodia(prodiakey);
         const generate = await prodia.generateImage({
@@ -47,11 +52,13 @@ app.get('/api/imagine', async (req, res) => {
       return res.status(400).json({ error: 'Parameter "prompt" tidak ditemukan' });
     }
     const imagePath = await imagine(message);
-    res.status(200).sendFile(imagePath);
+    const imageBuffer = await getImageBuffer(imagePath);
+    res.status(200).type("image/png").send(imageBuffer);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Handle 404 error
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that!");
