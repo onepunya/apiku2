@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
-const Prodia = require("prodia.js");
-const prodia = new Prodia("cdffa14f-c399-42b6-af90-ad25be1f8ba6"); // API KEY HERE
+const { Prodia } = require("prodia.js");
+const prodiakey = "cdffa14f-c399-42b6-af90-ad25be1f8ba6"// API KEY HERE
 global.creator = 'Mr.one | github/onepunya'
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +15,7 @@ app.use(cors());
 
 //fungsi untuk imagine
 async function imagine(message) {
+const prodia = new Prodia(prodiakey);
         const generate = await prodia.generateImage({
             prompt: message,
             model: "majicmixRealistic_v4.safetensors [29d0de58]",
