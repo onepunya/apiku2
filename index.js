@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
-const { Prodia } = require("prodia.js");
+const Prodia = require("prodia.js");
 const prodia = new Prodia("cdffa14f-c399-42b6-af90-ad25be1f8ba6"); // API KEY HERE
 global.creator = 'Mr.one | github/onepunya'
 const app = express();
@@ -14,9 +14,9 @@ app.set("json spaces", 2);
 app.use(cors());
 
 //fungsi untuk imagine
-async function imagine(prompt) {
+async function pinecone(message) {
         const generate = await prodia.generateImage({
-            prompt: prompt,
+            prompt: message,
             model: "majicmixRealistic_v4.safetensors [29d0de58]",
             negative_prompt: "BadDream, (UnrealisticDream:1.3)",
             sampler: "DPM++ SDE Karras",
@@ -56,8 +56,6 @@ app.get('/api/imagine', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-/
 // Handle 404 error
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that!");
