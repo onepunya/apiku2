@@ -46,16 +46,17 @@ app.get('/api/imagine', async (req, res) => {
     if (!message) {
       return res.status(400).json({ error: 'Parameter "prompt" tidak ditemukan' });
     }
-    const response = await imagine(message);
-    res.status(200).json({
-      status: 200,
-      creator: global.creator,
-      data: { response }
-    });
+    const image = await imagine(message);
+
+    // Mengirim gambar langsung sebagai response
+    res.status(200);
+    res.set('Content-Type', 'image/png'); // Set header untuk tipe konten
+    axios.get(image, { responseType: 'stream' }).pipe(res);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Handle 404 error
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that!");
