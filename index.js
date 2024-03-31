@@ -87,7 +87,7 @@ async function blackboxAIChat(message) {
 
 // Endpoint untuk servis dokumen HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Api.html'));
+  res.sendFile(path.join(__dirname, 'interface.html'));
 });
 app.get('/doc', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
