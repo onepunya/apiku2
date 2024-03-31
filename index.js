@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
-
+global.creator = 'Mr.one | github/onepunya
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.enable("trust proxy");
@@ -100,7 +100,7 @@ app.get('/api/ragbot', async (req, res) => {
     const response = await ragBot(message);
     res.status(200).json({
       status: 200,
-      creator: "siputzx",
+      creator: global.creator,
       data: { response }
     });
   } catch (error) {
@@ -118,7 +118,7 @@ app.get('/api/degreeguru', async (req, res) => {
     const response = await degreeGuru(message);
     res.status(200).json({
       status: 200,
-      creator: "siputzx",
+      creator: global.creator,
       data: { response }
     });
   } catch (error) {
@@ -136,7 +136,7 @@ app.get('/api/pinecone', async (req, res) => {
     const response = await pinecone(message);
     res.status(200).json({
       status: 200,
-      creator: "siputzx",
+      creator: global.creator,
       data: { response }
     });
   } catch (error) {
@@ -154,7 +154,7 @@ app.get('/api/smartcontract', async (req, res) => {
     const response = await smartContract(message);
     res.status(200).json({
       status: 200,
-      creator: "siputzx",
+      creator: global.creator,
       data: { response }
     });
   } catch (error) {
@@ -172,7 +172,7 @@ app.get('/api/blackboxAIChat', async (req, res) => {
     const response = await blackboxAIChat(message);
     res.status(200).json({
       status: 200,
-      creator: "siputzx",
+      creator: global.creator,
       data: { response }
     });
   } catch (error) {
