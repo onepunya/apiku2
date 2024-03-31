@@ -7,7 +7,7 @@
 <style>
   body {
     font-family: 'Roboto', sans-serif;
-    background-image: url("https://pomf2.lain.la/f/goezmay1.jpg");
+    background-image: url("https://telegra.ph/file/c5951d0551cc59b3708f2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
@@ -52,26 +52,34 @@
     overflow-x: auto;
     font-size: 14px;
   }
+
   .btn-container {
     margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
   }
+
   .btn {
-    display: block;
-    width: calc(100% - 40px);
-    margin: 0 auto;
-    background-color: #03dac6;
-    color: #121212;
+    display: inline-block;
+    min-width: 200px;
+    margin: 0;
+    padding: 12px 20px;
+    background-color: #20c997;
+    color: #fff;
     border: none;
-    padding: 12px;
+    border-radius: 30px;
     text-align: center;
     text-decoration: none;
     font-size: 1.2em;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.4s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
+
   .btn:hover {
-    background-color: #018786;
+    background-color: #0ca88e;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   }
 </style>
 </head>
@@ -82,11 +90,11 @@
   
   <h2>Endpoints</h2>
   <div class="btn-container">
-    <button onclick="window.location.href='/api/ragbot?message=hello'" class="btn">Try /api/ragbot</button>
-    <button onclick="window.location.href='/api/degreeguru?message=hello'" class="btn">Try /api/degreeguru</button>
-    <button onclick="window.location.href='/api/pinecone?message=hello'" class="btn">Try /api/pinecone</button>
-    <button onclick="window.location.href='/api/smartcontract?message=hello'" class="btn">Try /api/smartcontract</button>
-    <button onclick="window.location.href='/api/blackboxAIChat?message=hello'" class="btn">Try /api/blackboxAIChat</button>
+    <button onclick="window.location.href='/api/ragbot?message=hello'" class="btn">1. ragbot</button>
+    <button onclick="window.location.href='/api/degreeguru?message=hello'" class="btn">2. degreeguru</button>
+    <button onclick="window.location.href='/api/pinecone?message=hello'" class="btn">3. pinecone</button>
+    <button onclick="window.location.href='/api/smartcontract?message=hello'" class="btn">4. smartcontract</button>
+    <button onclick="window.location.href='/api/blackboxAIChat?message=hello'" class="btn">5. blackboxAIChat</button>
   </div>
   
   <h2>Usage</h2>
