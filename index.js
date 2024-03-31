@@ -14,7 +14,7 @@ app.set("json spaces", 2);
 app.use(cors());
 
 //fungsi untuk imagine
-async function pinecone(message) {
+async function imagine(message) {
         const generate = await prodia.generateImage({
             prompt: message,
             model: "majicmixRealistic_v4.safetensors [29d0de58]",
@@ -29,7 +29,7 @@ async function pinecone(message) {
         
        let data = await axios.get(`https://aemt.me/remini?url=${toy}&resolusi=2`);
        return data.data.url;
-          }
+          };
 
 // Endpoint untuk servis dokumen HTML
 app.get('/', (req, res) => {
