@@ -27,9 +27,7 @@ const prodia = new Prodia(prodiakey);
         });
         
         let toy = `https://images.prodia.xyz/${generate.job}.png`;
-        
-       let data = await axios.get(`https://aemt.me/remini?url=${toy}&resolusi=2`);
-       return data.data.url;
+       return toy;
           };
 
 // Endpoint untuk servis dokumen HTML
