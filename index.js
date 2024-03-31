@@ -58,7 +58,7 @@ app.get('/api/imagine', async (req, res) => {
     if (!message) {
       return res.status(400).json({ error: 'Parameter "prompt" tidak ditemukan' });
     }
-    const response = await imagine(prompt);
+    const response = await imagine(message);
     res.status(200).json({
       status: 200,
       creator: global.creator,
