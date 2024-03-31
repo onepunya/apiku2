@@ -4,6 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const { Prodia } = require("prodia.js");
 const prodiakey = "cdffa14f-c399-42b6-af90-ad25be1f8ba6"// API KEY HERE
+const { srgan2x, srgan4x } = require('super-resolution-scraper')
 global.creator = 'Mr.one | github/onepunya'
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,7 +13,11 @@ app.set("json spaces", 2);
 
 // Middleware untuk CORS
 app.use(cors());
-
+//function esegan
+async function esrgan(url) {
+const res = await srgan2x(url)
+return res.result;
+}
 //fungsi untuk imagine
 async function imagine(message) {
 const prodia = new Prodia(prodiakey);
@@ -27,7 +32,8 @@ const prodia = new Prodia(prodiakey);
         });
         
         let toy = `https://images.prodia.xyz/${generate.job}.png`;
-       return toy;
+        let final = await esrgan(toy)
+       return final;
           };
 
 // Endpoint untuk servis dokumen HTML
