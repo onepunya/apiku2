@@ -46,18 +46,12 @@ app.get('/api/imagine', async (req, res) => {
     if (!message) {
       return res.status(400).json({ error: 'Parameter "prompt" tidak ditemukan' });
     }
-    const image = await imagine(message);
-    res.status(200).json({
-      status: 200,
-      creator: global.creator,
-      data: { image }
-    });
-
+    const imagePath = await imagine(message);
+    res.status(200).sendFile(imagePath);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
-
 // Handle 404 error
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that!");
