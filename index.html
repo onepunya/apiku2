@@ -15,7 +15,9 @@
     padding: 0;
   }
   .container {
-    width: 100%;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -56,13 +58,14 @@
   .btn-container {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
   }
 
   .btn {
-    display: inline-block;
-    min-width: 200px;
-    margin: 0;
+    display: block;
+    width: 100%;
+    margin: 10px 0;
     padding: 12px 20px;
     background-color: #20c997;
     color: #fff;
@@ -80,6 +83,12 @@
     background-color: #0ca88e;
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  footer {
+    text-align: center;
+    color: #a9a9a9;
+    margin-top: 30px;
   }
 </style>
 </head>
