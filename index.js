@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
-global.creator = 'Mr.one | github/onepunya
+global.creator = 'Mr.one | github/onepunya'
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.enable("trust proxy");
