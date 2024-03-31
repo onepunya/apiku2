@@ -15,7 +15,6 @@ app.use(cors());
 
 //fungsi untuk imagine
 async function imagine(prompt) {
-    try {
         const generate = await prodia.generateImage({
             prompt: prompt,
             model: "majicmixRealistic_v4.safetensors [29d0de58]",
@@ -28,20 +27,9 @@ async function imagine(prompt) {
         
         let toy = `https://images.prodia.xyz/${generate.job}.png`;
         
-        return new Promise((resolve, reject) => {
-            setTimeout(async () => {
-                try {
-                    let data = await axios.get(`https://aemt.me/remini?url=${toy}&resolusi=2`);
-                    resolve(data.data.url);
-                } catch (error) {
-                    reject(error);
-                }
-            }, 20000);
-        });
-    } catch (e) {
-        throw e;
-    }
-}
+       let data = await axios.get(`https://aemt.me/remini?url=${toy}&resolusi=2`);
+       return data.data.url;
+          }
 
 // Endpoint untuk servis dokumen HTML
 app.get('/', (req, res) => {
