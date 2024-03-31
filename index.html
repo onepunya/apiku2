@@ -61,16 +61,16 @@
 
   .btn {
     display: block;
-    width: 50%;
+    width: 100%;
     margin: 10px 0;
-    padding: 10px 15px;
+    padding: 12px 20px;
     background-color: #20c997;
     color: #fff;
     border: none;
     border-radius: 30px;
     text-align: center;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1.2em;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -97,9 +97,16 @@
   <h2>Usage</h2>
   <p>To interact with the endpoints, send a GET request to the desired endpoint with the required query parameter:</p>
   <ul>
-    <li>EXAMPLE: https://onesytex.my.id/api/imagine?prompt=${query)</li>
+    <li>EXAMPLE</li>
   </ul>
+    <pre>
+  use
+  {base_url}/api/{endpoint}?{req}={query}
   
+  example 
+  https://www.onesytex.my.id/api/imagine?prompt=cute%20girl
+  </pre>
+
   <h2>Response</h2>
   <p>The response will be in JSON format with the following structure:</p>
   <pre>
