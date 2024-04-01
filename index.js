@@ -39,7 +39,7 @@ async function Resize(buffer) {
 async function vox(text, speaker) {
 const key = 'U282o-0-04r-x_O'
 const urlnya = `https://deprecatedapis.tts.quest/v2/voicevox/audio/?key=${key}&speaker=${speaker}&pitch=0&intonationScale=1&speed=1&text=${encodeURIComponent(text)}`
-let buf = Buffer.from(urlnya)
+let buf = bufferlah(urlnya)
 return buf;
 }
 //fungsi Speaker VOICEVOX
