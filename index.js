@@ -221,7 +221,7 @@ try {
       res.status(200).json({
       status: 200,
       creator: global.creator,
-      info: "gunakan id nya! contoh {speaker=30} di endpoint", 
+      info: "gunakan id nya! contoh {speaker=30} di endpoint voicevox-synthesis", 
       result: {
            data 
               }, 
