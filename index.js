@@ -39,7 +39,7 @@ app.get('/doc', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 app.get('/end', (req, res) => {
-  res.sendFile(path.join(__dirname, 'enpoint.html'));
+  res.sendFile(path.join(__dirname, 'endpoint.html'));
 });
 
 // Endpoint untuk imagine
