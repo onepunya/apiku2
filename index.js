@@ -214,14 +214,17 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
       return res.status(400).json({ error: 'Parameter "speaker" tidak ditemukan pastikan susunan endpoint nya sudah benar' });
  }
     const data = await vox(message, speakerr);
+       res.set({
+      'Content-Type': 'audio/mpeg',
+      'Content-Disposition': 'attachment; filename="synthesized_voicevox.mp3"'
+    });
         res.send(data);
       } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 app.get('/api/voicevox-speaker', async (req, res) => {
-try {
-    const data = await spe();
+const data = await spe();
       res.status(200).json({
       status: 200,
       creator: global.creator,
@@ -231,9 +234,6 @@ try {
               }, 
     });
 
-      } catch (error) {
-    res.status(500).json({ error: "server eror" });
-  }
 });
 
 // Handle error
