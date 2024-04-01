@@ -38,6 +38,9 @@ app.get('/', (req, res) => {
 app.get('/doc', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+app.get('/end', (req, res) => {
+  res.sendFile(path.join(__dirname, 'enpoint.html'));
+});
 
 // Endpoint untuk imagine
 app.get('/api/prodia', async (req, res) => {
