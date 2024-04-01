@@ -209,7 +209,7 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
       return res.status(400).json({ error: 'Parameter "speaker" tidak ditemukan pastikan susunan endpoint nya sudah benar' });
  }
     const data = await vox(message, speakerr);
-        res.set('Content-Type', "audio/mpeg");
+        res.set('Content-Type', "audio/mp3");
         res.send(data);
       } catch (error) {
     res.status(500).json({ error: error.message });
