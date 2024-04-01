@@ -35,6 +35,19 @@ async function Resize(buffer) {
     return kiyomasa
 }
 
+//fungsi VOICEVOX
+async function vox(text, speaker) {
+const key = 'U282o-0-04r-x_O'
+const urlnya = `https://deprecatedapis.tts.quest/v2/voicevox/audio/?key=${key}&speaker=${speaker}&pitch=0&intonationScale=1&speed=1&text=${encodeURIComponent(text)}`
+let buf = Buffer.from(urlnya)
+return buf;
+}
+//fungsi Speaker VOICEVOX
+async function spe() {
+const urlnya = await axios.get(`https://deprecatedapis.tts.quest/v2/voicevox/speakers/?key=R_m8Q8e8s2r808k`) 
+
+return urlnya.data;
+} 
 //fungsi gemini
 async function ask(inputText) {
   // For text-only input, use the gemini-pro model
@@ -183,9 +196,40 @@ app.get('/api/gemini-vision', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-// Handle 404 error
-app.use((req, res, next) => {
-  res.status(404).send("Sorry can't find that!");
+
+//endpoint VOIXEVOX 
+app.get('/api/voicevox-synthesis', async (req, res) => {
+  try {
+    const speakerr = req.query.speaker
+    const message = req.query.text;
+    if (!message) {
+      return res.status(400).json({ error: 'Parameter "text" tidak ditemukan' });
+    }
+    if (!speakerr) {
+      return res.status(400).json({ error: 'Parameter "speaker" tidak ditemukan pastikan susunan endpoint nya sudah benar' });
+ }
+    const data = await vox(message, speakerr);
+        res.set('Content-Type', "audio/mpeg");
+        res.send(data);
+      } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+app.get('/api/voicevox-speaker', async (res) => {
+  try {
+    const data = await spe();
+      res.status(200).json({
+      status: 200,
+      creator: global.creator,
+      info: "gunakan id nya! contoh {speaker=30} di endpoint", 
+      result: {
+           data 
+              }, 
+    });
+
+      } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Handle error
