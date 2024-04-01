@@ -216,7 +216,7 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
   }
 });
 app.get('/api/voicevox-speaker', async (res) => {
-  try {
+try {
     const data = await spe();
       res.status(200).json({
       status: 200,
@@ -228,7 +228,7 @@ app.get('/api/voicevox-speaker', async (res) => {
     });
 
       } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: "server eror" });
   }
 });
 
