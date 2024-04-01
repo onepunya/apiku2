@@ -228,16 +228,20 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
   }
 });
 app.get('/api/voicevox-speaker', async (req, res) => {
-const data = await spe();
-      res.status(200).json({
+  try {
+    const data = await spe();
+    res.status(200).json({
       status: 200,
       creator: global.creator,
-      info: "gunakan id nya! contoh {speaker=30} di endpoint voicevox-synthesis", 
-      result: {
-           data 
+      result: { 
+         data
               }, 
+
     });
 
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Handle error
