@@ -28,6 +28,13 @@ const response= await axios({
   const buffer = Buffer.from(response.data, 'binary');
   return buffer;   
 }
+
+async function Resize(buffer) {
+    var oyy = await jimp.read(buffer);
+    var kiyomasa = await oyy.resize(512, 512).getBufferAsync(jimp.MIME_JPEG)
+    return kiyomasa
+}
+
 //fungsi gemini
 async function ask(inputText) {
   // For text-only input, use the gemini-pro model
@@ -51,6 +58,7 @@ const response = await axios.post(url, data, { headers })
 // image input gemini vision
 async function askImage(inputTextt, inputImage) {
 const bufer = await bufferlah(inputImage)
+const bup = await Resize(bufer)
     const requestBody = {
         "contents": [
             {
@@ -59,7 +67,7 @@ const bufer = await bufferlah(inputImage)
                     {
                         "inline_data": {
                             "mime_type": "image/jpeg",
-                            "data": bufer.toString('base64')
+                            "data": bup.toString('base64')
                         }
                     }
                 ]
@@ -161,7 +169,7 @@ app.get('/api/gemini-vision', async (req, res) => {
     if (!gambar) {
       return res.status(400).json({ error: 'Parameter "url" tidak ditemukan pastikan url gambar ada pada endpoint' });
  }
-    const data = await ask(message, gambar);
+    const data = await askImage(message, gambar);
     res.status(200).json({
       status: 200,
       creator: global.creator,
