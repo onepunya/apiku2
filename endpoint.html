@@ -47,13 +47,13 @@
   .btn-container {
     margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column; /* Mengubah direction flex menjadi column */
+    align-items: center; /* Menengahkan tombol secara horizontal */
   }
 
   .btn {
     display: block;
-    width: 50%;
+    width: 100%; /* Mengubah width tombol menjadi 100% */
     margin: 10px 0;
     padding: 10px 15px;
     background-color: #20c997;
@@ -79,11 +79,12 @@
 <body>
 <div class="container">
   <h1>API Endpoint</h1>
-  </ul>
-   <li>Onesytex Api</li>
+  
+  <ul>
+    <li>Onesytex Api</li>
   </ul> 
   
-  <h2>list Endpoints</h2>
+  <h2>List Endpoints</h2>
   
   <p>#Ai Chat</p>
   <div class="btn-container">
@@ -91,12 +92,12 @@
     <button onclick="window.location.href='/api/gemini-vision?text=gambar%20apa%20ini&url=https://telegra.ph/file/89a2a3326329daf2bf9c5.jpg'" class="btn">2. gemini-vision</button>
   </div>
   
-    <p>#Ai image generation</p>
+  <p>#Ai Image Generation</p>
   <div class="btn-container">
     <button onclick="window.location.href='/api/prodia?prompt=cute%20girl'" class="btn">1. prodia</button>
   </div>
-
-    <ul>
+  
+  <ul>
     <li>Onesytex Api</li>
   </ul> 
 </div>
