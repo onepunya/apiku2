@@ -17,7 +17,7 @@ app.set("json spaces", 2);
 app.use(cors());
 //fungsi buffer 
 async function fetchBuffer(file, options = {}) {
-const bufet = await axios.get(file, { responseType: "arraybuffer", headers: options })).data
+const bufet = await (await axios.get(file, { responseType: "arraybuffer", headers: options })).data
 return bufet;
 }
 
