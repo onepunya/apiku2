@@ -53,7 +53,7 @@ app.get('/api/prodia', async (req, res) => {
     res.status(200).json({
       status: 200,
       creator: global.creator,
-      data: { image
+      data: { image, 
       info: "untuk mengambil hasil gambar mohon tunggu dulu selama 5/10detik, kalau tidak hasil akan eror!"}, 
 
     });
