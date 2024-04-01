@@ -148,7 +148,7 @@ app.get('/api/gemini', async (req, res) => {
     res.status(200).json({
       status: 200,
       creator: global.creator,
-      data, 
+      result: { data }, 
 
     });
 
@@ -171,7 +171,7 @@ app.get('/api/gemini-vision', async (req, res) => {
     res.status(200).json({
       status: 200,
       creator: global.creator,
-      data, 
+      result: { data }, 
 
     });
 
