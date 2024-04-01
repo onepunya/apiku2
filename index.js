@@ -148,7 +148,9 @@ app.get('/api/gemini', async (req, res) => {
     res.status(200).json({
       status: 200,
       creator: global.creator,
-      result: { data }, 
+      result: { 
+         data
+              }, 
 
     });
 
@@ -167,11 +169,13 @@ app.get('/api/gemini-vision', async (req, res) => {
     if (!gambar) {
       return res.status(400).json({ error: 'Parameter "url" tidak ditemukan pastikan url gambar ada pada endpoint' });
  }
-    const data = await ask(message, gambar);
+    const data = await ask(message, `${encodeURIComponent(gambar)}`);
     res.status(200).json({
       status: 200,
       creator: global.creator,
-      result: { data }, 
+      result: {
+           data 
+              }, 
 
     });
 
