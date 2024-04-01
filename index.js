@@ -219,8 +219,7 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
  }
     const data = await vox(message, speakerr);
        res.set({
-      'Content-Type': 'audio/mpeg',
-      'Content-Disposition': 'attachment; filename="synthesized_voicevox.mp3"'
+      'Content-Type': 'audio/mpeg'
     });
         res.send(data);
       } catch (error) {
