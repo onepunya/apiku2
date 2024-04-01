@@ -215,7 +215,7 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-app.get('/api/voicevox-speaker', async (res) => {
+app.get('/api/voicevox-speaker', async (req, res) => {
 try {
     const data = await spe();
       res.status(200).json({
