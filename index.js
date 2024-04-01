@@ -16,6 +16,11 @@ app.set("json spaces", 2);
 // Middleware untuk CORS
 app.use(cors());
 //fungsi buffer 
+async function fetchBuffer(file, options = {}) {
+const bufet = await axios.get(file, { responseType: "arraybuffer", headers: options })).data
+return bufet;
+}
+
 async function bufferlah(hm) {
 const imageUrl = hm;
 const imagePath = 'gambar.jpg';
@@ -39,7 +44,7 @@ async function Resize(buffer) {
 async function vox(text, speaker) {
 const key = 'U282o-0-04r-x_O'
 const urlnya = `https://deprecatedapis.tts.quest/v2/voicevox/audio/?key=${key}&speaker=${speaker}&pitch=0&intonationScale=1&speed=1&text=${encodeURIComponent(text)}`
-let buf = bufferlah(urlnya)
+let buf = fetchBuffer(urlnya)
 return buf;
 }
 //fungsi Speaker VOICEVOX
@@ -209,7 +214,7 @@ app.get('/api/voicevox-synthesis', async (req, res) => {
       return res.status(400).json({ error: 'Parameter "speaker" tidak ditemukan pastikan susunan endpoint nya sudah benar' });
  }
     const data = await vox(message, speakerr);
-        res.set('Content-Type', "audio/wav");
+        res.set('Content-Type', "audio/mpeg");
         res.send(data);
       } catch (error) {
     res.status(500).json({ error: error.message });
