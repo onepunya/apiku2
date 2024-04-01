@@ -20,7 +20,6 @@ async function fetchBuffer(file, options = {}) {
 const bufet = await (await axios.get(file, { responseType: "arraybuffer", headers: options })).data
 return bufet;
 }
-
 async function bufferlah(hm) {
 const imageUrl = hm;
 const imagePath = 'gambar.jpg';
@@ -39,7 +38,12 @@ async function Resize(buffer) {
     var kiyomasa = await oyy.resize(512, 512).getBufferAsync(jimp.MIME_JPEG)
     return kiyomasa
 }
-
+async function fetchJson(url, options = {}) {
+         const result = await (await fetch(url, {
+            headers: options
+         })).json()
+         return result;
+   }
 //fungsi VOICEVOX
 async function vox(text, speaker) {
 const key = 'U282o-0-04r-x_O'
@@ -49,9 +53,9 @@ return buf;
 }
 //fungsi Speaker VOICEVOX
 async function spe() {
-const urlnya = await axios.get(`https://deprecatedapis.tts.quest/v2/voicevox/speakers/?key=R_m8Q8e8s2r808k`) 
+const urlnya = await fetchJson(`https://deprecatedapis.tts.quest/v2/voicevox/speakers/?key=R_m8Q8e8s2r808k`) 
 
-return urlnya.data;
+return urlnya;
 } 
 //fungsi gemini
 async function ask(inputText) {
