@@ -52,7 +52,7 @@ const data = {
 
 const response = await axios.post(url, data, { headers })
         console.log(response.data.candidates[0].content.parts[0].text);
-    return response;
+    return response.data.candidates[0].content.parts[0].text;
     }
     
 // image input gemini vision
@@ -85,7 +85,7 @@ const buff = await Resize(bufer)
     const data = await response.json();
 
     console.log(data);
-    return data
+    return data.candidates[0].content.parts[0].text;
 }
 
 //fungsi untuk prodia
